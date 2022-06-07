@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # LibreERP for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/libreerp.svg)](https://dash.yunohost.org/appci/app/libreerp) ![](https://ci-apps.yunohost.org/ci/badges/libreerp.status.svg) ![](https://ci-apps.yunohost.org/ci/badges/libreerp.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/libreerp.svg)](https://dash.yunohost.org/appci/app/libreerp) ![Working status](https://ci-apps.yunohost.org/ci/badges/libreerp.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/libreerp.maintain.svg)  
 [![Install LibreERP with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libreerp)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -25,7 +25,6 @@ LibreERP Apps can be used as stand-alone applications, but they also integrate s
 **Shipped version:** 12.0~ynh6
 
 **Demo:** https://www.odoo.com/trial
-
 ## Disclaimers / important information
 
 **WARNING**: LibreERP is a complex app. **DO NOT USE THIS PACKAGE** to run your business unless you know what you are doing!!! If you don't, you should consider to ask for help from a professionnal!
@@ -47,22 +46,23 @@ LibreERP is forked from Odoo Community Edition. The name is change due to Odoo t
 
 ## Documentation and resources
 
-* Official app website: https://odoo.com
-* Official user documentation: https://www.odoo.com/documentation/15.0/applications.html
-* Official admin documentation: https://www.odoo.com/documentation/15.0/administration.html
-* Upstream app code repository: https://github.com/odoo/odoo
-* YunoHost documentation for this app: https://yunohost.org/app_libreerp
-* Report a bug: https://github.com/YunoHost-Apps/libreerp_ynh/issues
+* Official app website: <https://odoo.com>
+* Official user documentation: <https://www.odoo.com/documentation/15.0/applications.html>
+* Official admin documentation: <https://www.odoo.com/documentation/15.0/administration.html>
+* Upstream app code repository: <https://github.com/odoo/odoo>
+* YunoHost documentation for this app: <https://yunohost.org/app_libreerp>
+* Report a bug: <https://github.com/YunoHost-Apps/libreerp_ynh/issues>
 
 ## Developer info
 
 Please send your pull request to the [testing branch](https://github.com/YunoHost-Apps/libreerp_ynh/tree/testing).
 
 To try the testing branch, please proceed like that.
-```
+
+``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/libreerp_ynh/tree/testing --debug
 or
 sudo yunohost app upgrade libreerp -u https://github.com/YunoHost-Apps/libreerp_ynh/tree/testing --debug
 ```
 
-**More info regarding app packaging:** https://yunohost.org/packaging_apps
+**More info regarding app packaging:** <https://yunohost.org/packaging_apps>
