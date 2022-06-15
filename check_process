@@ -4,9 +4,10 @@
 		domain="domain.tld"
         version="14"
         oca=0
-        admin_password="testpassw0rD"
 		lang="en_US"
         tz="Etc/GMT"
+		admin="john"
+        admin_password="testpassw0rD"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=0

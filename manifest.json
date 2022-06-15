@@ -38,10 +38,6 @@
                 "type": "domain"
             },
             {
-                "name": "admin",
-                "type": "user"
-            },
-            {
                 "name": "version",
                 "type": "string",
                 "ask": {
@@ -58,14 +54,6 @@
                 "ask": {
                     "en": "Do you want to setup OCA instead of LibreERP ? (not yet implemented)",
                     "fr": "Désirez vous installer OCA à la place des sources de LibreERP (pas encore implémenté)"
-                }
-            },
-            {
-                "name": "admin_password",
-                "type": "password",
-                "ask": {
-                    "en": "Choose a strong master admin password",
-                    "fr": "Choisissez un mot de passe maître fort pour l'administration"
                 }
             },
             {
@@ -86,6 +74,18 @@
                     "fr": "Choisissez un fuseau horaire"
                 },
                 "default": "Etc/UTC"
+            },
+            {
+                "name": "admin",
+                "type": "user"
+            },
+            {
+                "name": "admin_password",
+                "type": "password",
+                "ask": {
+                    "en": "Choose a strong master admin password",
+                    "fr": "Choisissez un mot de passe maître fort pour l'administration"
+                }
             }
         ]
     }

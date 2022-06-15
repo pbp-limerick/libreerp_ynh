@@ -25,12 +25,12 @@ ynh_abort_if_errors
 
 domain=$YNH_APP_ARG_DOMAIN
 path_url="/"
-admin=$YNH_APP_ARG_ADMIN
 export app_version=$YNH_APP_ARG_VERSION
 oca=$YNH_APP_ARG_OCA
-admin_password=$YNH_APP_ARG_ADMIN_PASSWORD
 lang=$YNH_APP_ARG_LANG
 tz=$YNH_APP_ARG_TZ
+admin=$YNH_APP_ARG_ADMIN
+admin_password=$YNH_APP_ARG_ADMIN_PASSWORD
 
 export app=$YNH_APP_INSTANCE_NAME
 
