@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/odoo/odoo/archive/d8322e64c6d999ffc72093b2ef2db91532138c89.tar.gz
-SOURCE_SUM=40cbbc93ab594f614499ccdd04922590c420bfadeaf2f889853a5d58073e5fef
+SOURCE_URL=https://github.com/odoo/odoo/archive/5a8690b35a2fa9c5ed81d858ac0d170beaabaaf9.tar.gz
+SOURCE_SUM=b52829b5f01f39d8e9bd6977eb1b9c23053e92c7574ec26e5b3d218522fccf3a
 SOURCE_FILENAME=odoo-14.tar.gz
 SOURCE_FORMAT=tar.gz
 SOURCE_SUM_PRG=sha256sum

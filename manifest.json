@@ -6,7 +6,7 @@
         "en": "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...).",
         "fr": "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats, ...)."
     },
-    "version": "12.0~ynh6",
+    "version": "15.0~ynh1",
     "url": "https://odoo.com",
     "upstream": {
         "license": "LGPL-3.0-only",
@@ -38,18 +38,14 @@
                 "type": "domain"
             },
             {
-                "name": "admin",
-                "type": "user"
-            },
-            {
                 "name": "version",
                 "type": "string",
                 "ask": {
                     "en": "Choose the version you want",
                     "fr": "Choisissez la version désirée"
                 },
-                "choices": ["11", "12", "14"],
-                "default": "14"
+                "choices": ["11", "12", "14", "15"],
+                "default": "15"
             },
             {
                 "name": "oca",
@@ -58,14 +54,6 @@
                 "ask": {
                     "en": "Do you want to setup OCA instead of LibreERP ? (not yet implemented)",
                     "fr": "Désirez vous installer OCA à la place des sources de LibreERP (pas encore implémenté)"
-                }
-            },
-            {
-                "name": "admin_password",
-                "type": "password",
-                "ask": {
-                    "en": "Choose a strong master admin password",
-                    "fr": "Choisissez un mot de passe maître fort pour l'administration"
                 }
             },
             {
@@ -86,6 +74,18 @@
                     "fr": "Choisissez un fuseau horaire"
                 },
                 "default": "Etc/UTC"
+            },
+            {
+                "name": "admin",
+                "type": "user"
+            },
+            {
+                "name": "admin_password",
+                "type": "password",
+                "ask": {
+                    "en": "Choose a strong master admin password",
+                    "fr": "Choisissez un mot de passe maître fort pour l'administration"
+                }
             }
         ]
     }
