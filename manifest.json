@@ -6,7 +6,7 @@
         "en": "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...).",
         "fr": "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats, ...)."
     },
-    "version": "15.0~ynh1",
+    "version": "16.0~ynh1",
     "url": "https://odoo.com",
     "upstream": {
         "license": "LGPL-3.0-only",
@@ -16,7 +16,7 @@
         "userdoc": "https://www.odoo.com/documentation/15.0/applications.html",
         "code": "https://github.com/odoo/odoo"
     },
-    "license": "LGPL-3.0,AGPL-3.0",
+    "license": "LGPL-3.0-only",
     "maintainer": {
         "name": "ljf",
         "email": "ljf+libreerp_ynh@reflexlibre.net"
@@ -44,8 +44,8 @@
                     "en": "Choose the version you want",
                     "fr": "Choisissez la version désirée"
                 },
-                "choices": ["11", "12", "14", "15"],
-                "default": "15"
+                "choices": ["11", "12", "14", "15", "16"],
+                "default": "16"
             },
             {
                 "name": "oca",
