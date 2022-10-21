@@ -22,7 +22,7 @@ The main LibreERP Apps include an Open Source CRM, Website Builder, eCommerce, P
 LibreERP Apps can be used as stand-alone applications, but they also integrate seamlessly so you get a full-featured Open Source ERP when you install several Apps.
 
 
-**Version incluse :** 15.0~ynh1
+**Version incluse :** 16.0~ynh1
 
 **Démo :** https://www.odoo.com/trial
 ## Avertissements / informations importantes
@@ -36,7 +36,7 @@ https://example.com/erp/ will NOT work
 To connect on your LibreERP
 -----------
 - Go on https://YOURDOMAIN/web
-- Use your master password
+- Login as "admin" with the master password you provied during installation
 
 About licences
 -----------

@@ -33,8 +33,6 @@ function debranding() {
 		sed -i 's/<a[^>]*>Support<\/a>//g' $final_path/$appname/addons/web/static/src/xml/base.xml
 	fi
 	cp ../conf/logo_type.png  $python_app/addons/base/static/img/logo_white.png
-	cp ../conf/favicon.ico  $final_path/$appname/addons/web/static/src/img/favicon.ico
-
 }
 
 function setup_files() {
