@@ -7,7 +7,7 @@ https://example.com/erp/ will NOT work
 To connect on your LibreERP
 -----------
 - Go on https://YOURDOMAIN/web
-- Use your master password
+- Login as "admin" with the master password you provied during installation
 
 About licences
 -----------
