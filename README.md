@@ -44,6 +44,10 @@ LibreERP 8.0 is under AGPL-3.0
 Next version are under LGPL-3.0
 LibreERP is forked from Odoo Community Edition. The name is change due to Odoo trademark policy.
 
+## :red_circle: Antifeatures
+
+- **Paid content**: Promotes or depends, entirely or partially, on a paid service.
+
 ## Documentation and resources
 
 * Official app website: <https://odoo.com>
