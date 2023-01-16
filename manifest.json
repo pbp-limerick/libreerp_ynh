@@ -3,8 +3,8 @@
     "id": "libreerp",
     "packaging_format": 1,
     "description": {
-        "en": "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...).",
-        "fr": "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats, ...)."
+        "en": "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...)",
+        "fr": "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats...)"
     },
     "version": "16.0~ynh1",
     "url": "https://odoo.com",
@@ -52,7 +52,7 @@
                 "type": "boolean",
                 "default": false,
                 "ask": {
-                    "en": "Do you want to setup OCA instead of LibreERP ? (not yet implemented)",
+                    "en": "Do you want to setup OCA instead of LibreERP? (not yet implemented)",
                     "fr": "Désirez vous installer OCA à la place des sources de LibreERP (pas encore implémenté)"
                 }
             },
