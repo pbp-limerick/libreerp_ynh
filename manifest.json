@@ -12,8 +12,8 @@
         "license": "LGPL-3.0-only",
         "website": "https://odoo.com",
         "demo": "https://www.odoo.com/trial",
-        "admindoc": "https://www.odoo.com/documentation/15.0/administration.html",
-        "userdoc": "https://www.odoo.com/documentation/15.0/applications.html",
+        "admindoc": "https://www.odoo.com/documentation/16.0/administration.html",
+        "userdoc": "https://www.odoo.com/documentation/16.0/applications.html",
         "code": "https://github.com/odoo/odoo"
     },
     "license": "LGPL-3.0-only",
@@ -52,8 +52,8 @@
                 "type": "boolean",
                 "default": false,
                 "ask": {
-                    "en": "Do you want to setup OCA instead of LibreERP? (not yet implemented)",
-                    "fr": "Désirez vous installer OCA à la place des sources de LibreERP (pas encore implémenté)"
+                    "en": "Do you want to setup OCA instead of LibreERP?",
+                    "fr": "Désirez vous installer OCA à la place des sources de LibreERP"
                 }
             },
             {
