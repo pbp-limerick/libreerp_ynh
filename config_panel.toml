@@ -1,0 +1,39 @@
+version = "1.0"
+
+[custom_code]
+name = "Manage custom code"
+
+    [custom_code.components]
+    name = "Custom code"
+
+        [custom_code.components.custom_repo]
+        ask = "Fill in your custom repo"
+        type = "url"
+        bind = "null"
+        help = """\
+        It is expected to contain one or more addons, and possibly a [repos.yml](https://github.com/acsone/git-aggregator#configuration-file) and/or a [requirements.txt](https://pip.pypa.io/en/stable/reference/requirements-file-format) which will be installed for this instance when you click 'Update custom code' below.\
+        """
+
+        [custom_code.components.custom_branch]
+        ask = "Fill in the branch to use"
+        type = "string"
+        help = "You should use the repo's main branch for your production instance, and some other branch for testing that you regularly merge into the main branch. Leave empty if unsure"
+        bind = "null"
+        visible = "custom_repo"
+
+        [custom_code.components.update_code]
+        ask = "Update custom code"
+        type = "button"
+        help = "This will pull your custom code, run gitaggregate if there's a repos.yml file, install/update requirements.txt, and run a database update if you have the [module_auto_update](https://apps.odoo.com/apps/modules/15.0/module_auto_update) module available"
+
+[config_file]
+name = "Edit the odoo config file"
+services = ["__APP__"]
+
+    [config_file.components]
+    name = "Config file"
+
+        [config_file.components.config_file]
+        help = "When you change this, you need to restart your app"
+        type = "text"
+        bind = "/etc/__APP__/main.conf"
