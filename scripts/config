@@ -40,6 +40,7 @@ run__update_code() {
     else
       pushd $CUSTOM_REPO
         if [ ! -z "$custom_branch" ]; then
+          ynh_exec_as $app git -C $CUSTOM_REPO fetch origin $custom_branch
           ynh_exec_as $app git -C $CUSTOM_REPO checkout $custom_branch
         fi
         ynh_exec_as $app git -C $CUSTOM_REPO reset --hard
