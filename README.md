@@ -5,7 +5,8 @@ It shall NOT be edited by hand.
 
 # LibreERP for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/libreerp.svg)](https://dash.yunohost.org/appci/app/libreerp) ![Working status](https://ci-apps.yunohost.org/ci/badges/libreerp.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/libreerp.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/libreerp.svg)](https://dash.yunohost.org/appci/app/libreerp) ![Working status](https://ci-apps.yunohost.org/ci/badges/libreerp.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/libreerp.maintain.svg)
+
 [![Install LibreERP with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=libreerp)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -44,13 +45,17 @@ LibreERP 8.0 is under AGPL-3.0
 Next version are under LGPL-3.0
 LibreERP is forked from Odoo Community Edition. The name is change due to Odoo trademark policy.
 
+## :red_circle: Antifeatures
+
+- **Paid content**: Promotes or depends, entirely or partially, on a paid service.
+
 ## Documentation and resources
 
 * Official app website: <https://odoo.com>
 * Official user documentation: <https://www.odoo.com/documentation/15.0/applications.html>
 * Official admin documentation: <https://www.odoo.com/documentation/15.0/administration.html>
 * Upstream app code repository: <https://github.com/odoo/odoo>
-* YunoHost documentation for this app: <https://yunohost.org/app_libreerp>
+* YunoHost Store: <https://apps.yunohost.org/app/libreerp>
 * Report a bug: <https://github.com/YunoHost-Apps/libreerp_ynh/issues>
 
 ## Developer info
