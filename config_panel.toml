@@ -4,7 +4,6 @@ version = "1.0"
 name = "Manage custom code"
 
     [custom_code.components]
-    name = "Custom code"
 
         [custom_code.components.custom_repo]
         ask = "Fill in your custom repo"
@@ -31,9 +30,7 @@ name = "Edit the odoo config file"
 services = ["__APP__"]
 
     [config_file.components]
-    name = "Config file"
 
         [config_file.components.config_file]
-        help = "When you change this, you need to restart your app"
         type = "text"
         bind = "/etc/__APP__/main.conf"
