@@ -23,7 +23,7 @@ The main LibreERP Apps include an Open Source CRM, Website Builder, eCommerce, P
 LibreERP Apps can be used as stand-alone applications, but they also integrate seamlessly so you get a full-featured Open Source ERP when you install several Apps.
 
 
-**Version incluse :** 16.0~ynh1
+**Version incluse :** 16.0~ynh2
 
 **Démo :** https://www.odoo.com/trial
 ## Avertissements / informations importantes
@@ -52,8 +52,8 @@ LibreERP is forked from Odoo Community Edition. The name is change due to Odoo t
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://odoo.com>
-* Documentation officielle utilisateur : <https://www.odoo.com/documentation/15.0/applications.html>
-* Documentation officielle de l’admin : <https://www.odoo.com/documentation/15.0/administration.html>
+* Documentation officielle utilisateur : <https://www.odoo.com/documentation/16.0/applications.html>
+* Documentation officielle de l’admin : <https://www.odoo.com/documentation/16.0/administration.html>
 * Dépôt de code officiel de l’app : <https://github.com/odoo/odoo>
 * YunoHost Store: <https://apps.yunohost.org/app/libreerp>
 * Signaler un bug : <https://github.com/YunoHost-Apps/libreerp_ynh/issues>
