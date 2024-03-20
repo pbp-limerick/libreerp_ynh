@@ -132,19 +132,13 @@ ynh_configure () {
 		content="dbfilter = $db_name"
 	else
 		content="db_name = $db_name"
-		if [[ $app_version -gt 9 ]]
-		then
+		if [[ $app_version -gt 9 ]]; then
 			content2="dbfilter = False"
 		fi
 		content3="list_db = False"
 	fi
 
-	mkdir -p "$(dirname $DEST)"
-	if [ -f '../manifest.toml' ] ; then
-		ynh_add_config "${YNH_CWD}/../conf/$TEMPLATE" "$DEST"
-	else
-		ynh_add_config "${YNH_CWD}/../settings/conf/$TEMPLATE" "$DEST"
-	fi
+	ynh_add_config --template="$TEMPLATE" --destination="$DEST"
 }
 
 #=================================================
