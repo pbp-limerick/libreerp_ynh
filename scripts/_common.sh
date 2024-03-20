@@ -9,8 +9,7 @@ export FORKNAME="odoo"
 
 swap_needed=1024
 
-# dependencies used by the app
-pkg_dependencies="curl postgresql xfonts-75dpi xfonts-base wkhtmltopdf node-less python3-dev gcc libldap2-dev libssl-dev libsasl2-dev python3-pip python3-dev python3-venv python3-wheel libxslt-dev libzip-dev python3-setuptools libjpeg-dev zlib1g-dev libfreetype6-dev libffi-dev libpq-dev"
+conf_file="/etc/$app/main.conf"
 
 #=================================================
 # PERSONAL HELPERS
@@ -18,50 +17,50 @@ pkg_dependencies="curl postgresql xfonts-75dpi xfonts-base wkhtmltopdf node-less
 
 function debranding() {
 	# Remove Odoo references to avoid trademark issue
-	if [ -d $final_path/$appname/$FORKNAME ]; then
-		python_app=$final_path/$appname/$FORKNAME
+	if [ -d $install_dir/$appname/$FORKNAME ]; then
+		python_app=$install_dir/$appname/$FORKNAME
 	else
-		python_app=$final_path/$appname/openerp
+		python_app=$install_dir/$appname/openerp
 	fi
-	find $final_path/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <a[^>]*>Odoo<\/a>//g' {} \;
-	find $final_path/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/<a[^>]*>Powered by <[^>]*>Odoo<\/[^>]*><\/a>//g' {} \;
-	find $final_path/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*>Odoo<\/[^>]*>//g' {} \;
-	find $final_path/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*><img[^>]*Odoo[^>]*><\/a>//g' {} \;
-	if test -f "$final_path/$appname/addons/web/static/src/xml/base.xml"; then
-		sed -i 's/<a[^>]*>My Odoo.com account<\/a>//g' $final_path/$appname/addons/web/static/src/xml/base.xml
-		sed -i 's/<a[^>]*>Documentation<\/a>//g' $final_path/$appname/addons/web/static/src/xml/base.xml
-		sed -i 's/<a[^>]*>Support<\/a>//g' $final_path/$appname/addons/web/static/src/xml/base.xml
+	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <a[^>]*>Odoo<\/a>//g' {} \;
+	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/<a[^>]*>Powered by <[^>]*>Odoo<\/[^>]*><\/a>//g' {} \;
+	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*>Odoo<\/[^>]*>//g' {} \;
+	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*><img[^>]*Odoo[^>]*><\/a>//g' {} \;
+	if test -f "$install_dir/$appname/addons/web/static/src/xml/base.xml"; then
+		sed -i 's/<a[^>]*>My Odoo.com account<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
+		sed -i 's/<a[^>]*>Documentation<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
+		sed -i 's/<a[^>]*>Support<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
 	fi
 	cp ../conf/logo_type.png  $python_app/addons/base/static/img/logo_white.png
 }
 
 function setup_files() {
-   
+
 	if [[ $oca -eq 0 ]]; then
-		ynh_setup_source $final_path/$appname $app_version
+		ynh_setup_source $install_dir/$appname $app_version
 	else
-		ynh_setup_source $final_path/$appname "oca-$app_version"
+		ynh_setup_source $install_dir/$appname "oca-$app_version"
 	fi
 	debranding
-	mkdir -p $final_path/custom-addons
-	chmod 750 "$final_path"
-	chmod -R o-rwx "$final_path"
-	chown -R $app:$app "$final_path"
+	mkdir -p $install_dir/custom-addons
+	chmod 750 "$install_dir"
+	chmod -R o-rwx "$install_dir"
+	chown -R $app:$app "$install_dir"
 	touch /var/log/$app.log
 	chown $app:$app /var/log/$app.log
-	
+
 	if [ ! -f $conf_file ]; then
 		ynh_configure server.conf $conf_file
 		chmod 400 "$conf_file"
 		chown $app:$app "$conf_file"
 
 		# Autoinstall the LDAP auth module
-		if ls $final_path/$appname/$FORKNAME-bin > /dev/null ; then
-			ynh_replace_string "^{$" "{'auto_install': True," $final_path/$appname/addons/auth_ldap/__manifest__.py
+		if ls $install_dir/$appname/$FORKNAME-bin > /dev/null ; then
+			ynh_replace_string "^{$" "{'auto_install': True," $install_dir/$appname/addons/auth_ldap/__manifest__.py
 		else
-			ynh_replace_string "'auto_install': False" "'auto_install': True" $final_path/$appname/addons/auth_ldap/__openerp__.py
+			ynh_replace_string "'auto_install': False" "'auto_install': True" $install_dir/$appname/addons/auth_ldap/__openerp__.py
 		fi
-	fi 
+	fi
 
 }
 
@@ -70,7 +69,7 @@ function setup_database() {
 	ynh_configure server.conf $conf_file
 	chown $app:$app $conf_file
 	# Load translation
-	#param=" --without-demo True --addons-path $final_path/$appname/addons --db_user $app --db_password $db_pwd --db_host 127.0.0.1 --db_port 5432 --db-filter '^$app\$' -d $app "
+	#param=" --without-demo True --addons-path $install_dir/$appname/addons --db_user $app --db_password $db_pwd --db_host 127.0.0.1 --db_port 5432 --db-filter '^$app\$' -d $app "
 	param=" -c $conf_file -d $app "
 	ynh_exec_as $app $bin_file -c $conf_file --stop-after-init -i base -d $app
 	ynh_exec_as $app $bin_file -c $conf_file --stop-after-init -i auth_ldap -d $app
