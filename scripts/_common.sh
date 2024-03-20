@@ -140,7 +140,7 @@ ynh_configure () {
 	fi
 
 	mkdir -p "$(dirname $DEST)"
-	if [ -f '../manifest.json' ] ; then
+	if [ -f '../manifest.toml' ] ; then
 		ynh_add_config "${YNH_CWD}/../conf/$TEMPLATE" "$DEST"
 	else
 		ynh_add_config "${YNH_CWD}/../settings/conf/$TEMPLATE" "$DEST"
