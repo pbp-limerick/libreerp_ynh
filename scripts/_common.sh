@@ -44,7 +44,7 @@ function setup_files() {
     if [[ "$oca" -eq 0 ]]; then
         source_id="main_${app_version}"
     else
-        source_id="main_${app_version}-oca"
+        source_id="main_${app_version}_oca"
     fi
     ynh_setup_source --source_id="$source_id" --dest_dir="$install_dir/$appname"
 
