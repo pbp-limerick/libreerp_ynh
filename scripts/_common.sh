@@ -59,9 +59,10 @@ function setup_files() {
     chown "$app:$app" "/var/log/$app.log"
 
     if [ ! -f "$conf_file" ]; then
+		mkdir -p "$(dirname "$conf_file")"
         ynh_configure server.conf "$conf_file"
         chmod 400 "$conf_file"
-        chown "$app:$app" "$conf_file"
+        chown -R "$app:$app" "$(dirname "$conf_file")"
 
         # Autoinstall the LDAP auth module
         if [ -f "$install_dir/$appname/$FORKNAME-bin" ]; then
