@@ -34,7 +34,7 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     [install.domain]
     type = "domain"
 
-    [install.version]
+    [install.app_version]
     ask.en = "Choose the version you want"
     ask.fr = "Choisissez la version désirée"
     type = "string"
