@@ -11,16 +11,7 @@ source /usr/share/yunohost/helpers
 # INITIALIZE AND STORE SETTINGS
 #=================================================
 
-export conf_file=/etc/$app/main.conf
-ynh_app_setting_set --app="$app" --key="conf_file" --value="$conf_file"
-
-export preinstall=0
-
-if [ "$app_version" = "9" ] || [ "$app_version" = "8" ]; then
-    bin_file="$install_dir/venv/bin/python3 $install_dir/$appname/$FORKNAME.py"
-else
-    bin_file="$install_dir/venv/bin/python3 $install_dir/$appname/$FORKNAME-bin"
-fi
+preinstall=0
 
 #=================================================
 # ADD SWAP
@@ -64,12 +55,12 @@ pushd "$install_dir"
         python3 -m venv venv
         venv/bin/pip3 install --upgrade pip
         venv/bin/pip3 install wheel
-        venv/bin/pip3 install -r $appname/requirements.txt
+        venv/bin/pip3 install -r "$appname/requirements.txt"
     else
         virtualenv venv
         venv/bin/pip3 install --upgrade pip
         venv/bin/pip install wheel
-        venv/bin/pip install -r $appname/requirements.txt
+        venv/bin/pip install -r "$appname/requirements.txt"
     fi
     ynh_secure_remove --file="$install_dir/.cargo"
     ynh_secure_remove --file="$install_dir/.rustup"

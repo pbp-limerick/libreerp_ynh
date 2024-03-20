@@ -4,88 +4,98 @@
 # COMMON VARIABLES
 #=================================================
 
-export appname="libreerp"
-export FORKNAME="odoo"
+appname="libreerp"
+FORKNAME="odoo"
 
 swap_needed=1024
 
 conf_file="/etc/$app/main.conf"
+
+if [ "$app_version" = "9" ] || [ "$app_version" = "8" ]; then
+    bin_file="$install_dir/venv/bin/python3 $install_dir/$appname/$FORKNAME.py"
+else
+    bin_file="$install_dir/venv/bin/python3 $install_dir/$appname/$FORKNAME-bin"
+fi
 
 #=================================================
 # PERSONAL HELPERS
 #=================================================
 
 function debranding() {
-	# Remove Odoo references to avoid trademark issue
-	if [ -d $install_dir/$appname/$FORKNAME ]; then
-		python_app=$install_dir/$appname/$FORKNAME
-	else
-		python_app=$install_dir/$appname/openerp
-	fi
-	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <a[^>]*>Odoo<\/a>//g' {} \;
-	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/<a[^>]*>Powered by <[^>]*>Odoo<\/[^>]*><\/a>//g' {} \;
-	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*>Odoo<\/[^>]*>//g' {} \;
-	find $install_dir/$appname -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*><img[^>]*Odoo[^>]*><\/a>//g' {} \;
-	if test -f "$install_dir/$appname/addons/web/static/src/xml/base.xml"; then
-		sed -i 's/<a[^>]*>My Odoo.com account<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
-		sed -i 's/<a[^>]*>Documentation<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
-		sed -i 's/<a[^>]*>Support<\/a>//g' $install_dir/$appname/addons/web/static/src/xml/base.xml
-	fi
-	cp ../conf/logo_type.png  $python_app/addons/base/static/img/logo_white.png
+    # Remove Odoo references to avoid trademark issue
+    if [ -d "$install_dir/$appname/$FORKNAME" ]; then
+        python_app="$install_dir/$appname/$FORKNAME"
+    else
+        python_app="$install_dir/$appname/openerp"
+    fi
+    find "$install_dir/$appname" -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <a[^>]*>Odoo<\/a>//g' {} \;
+    find "$install_dir/$appname" -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/<a[^>]*>Powered by <[^>]*>Odoo<\/[^>]*><\/a>//g' {} \;
+    find "$install_dir/$appname" -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*>Odoo<\/[^>]*>//g' {} \;
+    find "$install_dir/$appname" -type f \( -iname '*.xml' -o -iname '*.po' \) -exec sed -i 's/Powered by <[^>]*><img[^>]*Odoo[^>]*><\/a>//g' {} \;
+    if test -f "$install_dir/$appname/addons/web/static/src/xml/base.xml"; then
+        sed -i 's/<a[^>]*>My Odoo.com account<\/a>//g' "$install_dir/$appname/addons/web/static/src/xml/base.xml"
+        sed -i 's/<a[^>]*>Documentation<\/a>//g' "$install_dir/$appname/addons/web/static/src/xml/base.xml"
+        sed -i 's/<a[^>]*>Support<\/a>//g' "$install_dir/$appname/addons/web/static/src/xml/base.xml"
+    fi
+    cp ../conf/logo_type.png  "$python_app/addons/base/static/img/logo_white.png"
 }
 
 function setup_files() {
+    if [[ "$oca" -eq 0 ]]; then
+        source_id="main_${app_version}"
+    else
+        source_id="main_${app_version}-oca"
+    fi
+    ynh_setup_source --source_id="$source_id" --dest_dir="$install_dir/$appname"
 
-	if [[ $oca -eq 0 ]]; then
-		ynh_setup_source $install_dir/$appname $app_version
-	else
-		ynh_setup_source $install_dir/$appname "oca-$app_version"
-	fi
-	debranding
-	mkdir -p $install_dir/custom-addons
-	chmod 750 "$install_dir"
-	chmod -R o-rwx "$install_dir"
-	chown -R $app:$app "$install_dir"
-	touch /var/log/$app.log
-	chown $app:$app /var/log/$app.log
+    debranding
+    mkdir -p "$install_dir/custom-addons"
 
-	if [ ! -f $conf_file ]; then
-		ynh_configure server.conf $conf_file
-		chmod 400 "$conf_file"
-		chown $app:$app "$conf_file"
+    chmod 750 "$install_dir"
+    chmod -R o-rwx "$install_dir"
+    chown -R "$app:$app" "$install_dir"
 
-		# Autoinstall the LDAP auth module
-		if ls $install_dir/$appname/$FORKNAME-bin > /dev/null ; then
-			ynh_replace_string "^{$" "{'auto_install': True," $install_dir/$appname/addons/auth_ldap/__manifest__.py
-		else
-			ynh_replace_string "'auto_install': False" "'auto_install': True" $install_dir/$appname/addons/auth_ldap/__openerp__.py
-		fi
-	fi
+    touch "/var/log/$app.log"
+    chown "$app:$app" "/var/log/$app.log"
 
+    if [ ! -f "$conf_file" ]; then
+        ynh_configure server.conf "$conf_file"
+        chmod 400 "$conf_file"
+        chown "$app:$app" "$conf_file"
+
+        # Autoinstall the LDAP auth module
+        if [ -f "$install_dir/$appname/$FORKNAME-bin" ]; then
+            ynh_replace_string --target_file="$install_dir/$appname/addons/auth_ldap/__manifest__.py" \
+                --match_string="^{$" --replace_string="{'auto_install': True,"
+        else
+            ynh_replace_string --target_file="$install_dir/$appname/addons/auth_ldap/__openerp__.py" \
+                --match_string="'auto_install': False" --replace_string="'auto_install': True"
+        fi
+    fi
 }
 
 function setup_database() {
-	export preinstall=1
-	ynh_configure server.conf $conf_file
-	chown $app:$app $conf_file
-	# Load translation
-	#param=" --without-demo True --addons-path $install_dir/$appname/addons --db_user $app --db_password $db_pwd --db_host 127.0.0.1 --db_port 5432 --db-filter '^$app\$' -d $app "
-	param=" -c $conf_file -d $app "
-	ynh_exec_as $app $bin_file -c $conf_file --stop-after-init -i base -d $app
-	ynh_exec_as $app $bin_file -c $conf_file --stop-after-init -i auth_ldap -d $app
-	ynh_exec_as $app $bin_file -c $conf_file --stop-after-init --load-language $lang -d $app
-	# Configure language, timezone and ldap
-	ynh_exec_as $app $bin_file shell -c $conf_file -d $app <<< \
+    export preinstall=1
+    ynh_configure server.conf "$conf_file"
+    chown "$app:$app" "$conf_file"
+    # Load translation
+    #param=" --without-demo True --addons-path $install_dir/$appname/addons --db_user $app --db_password $db_pwd --db_host 127.0.0.1 --db_port 5432 --db-filter '^$app\$' -d $app "
+    param=" -c $conf_file -d $app "
+    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init -i base -d "$app"
+    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init -i auth_ldap -d "$app"
+    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init --load-language $lang -d "$app"
+    # Configure language, timezone and ldap
+    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
 "
 self.env['res.users'].search([['login', '=', 'admin']])[0].write({'password': '$admin_password'})
 self.env.cr.commit()
 "
-	ynh_exec_as $app $bin_file shell -c $conf_file -d $app <<< \
+    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
 "
 self.write({'tz':'$tz','lang':'$lang'})
 self.env.cr.commit()
 "
-	ynh_exec_as $app $bin_file shell -c $conf_file -d $app <<< \
+    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
 "
 template=env['res.users'].create({
   'login':'template',
@@ -107,9 +117,9 @@ self.company_id.ldaps.create({
 })
 self.env.cr.commit()
 "
-	export preinstall=0
-	ynh_configure server.conf $conf_file
-	chown $app:$app $conf_file
+    export preinstall=0
+    ynh_configure server.conf "$conf_file"
+    chown "$app:$app" "$conf_file"
 }
 
 ynh_configure () {
@@ -118,12 +128,11 @@ ynh_configure () {
 	content=""
 	content2=""
 	content3=""
-	if [[ $preinstall == '1' ]]
-	then
+	if [[ $preinstall == '1' ]]; then
 		content="dbfilter = $db_name"
 	else
 		content="db_name = $db_name"
-		if [[ $app_version > 9 ]]
+		if [[ $app_version -gt 9 ]]
 		then
 			content2="dbfilter = False"
 		fi
