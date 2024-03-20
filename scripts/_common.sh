@@ -82,21 +82,21 @@ function setup_database() {
     # Load translation
     #param=" --without-demo True --addons-path $install_dir/$appname/addons --db_user $app --db_password $db_pwd --db_host 127.0.0.1 --db_port 5432 --db-filter '^$app\$' -d $app "
     param=" -c $conf_file -d $app "
-    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init -i base -d "$app"
-    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init -i auth_ldap -d "$app"
-    ynh_exec_as "$app" "$bin_file" -c "$conf_file" --stop-after-init --load-language $lang -d "$app"
+    ynh_exec_as "$app" $bin_file -c "$conf_file" --stop-after-init -i base -d "$app"
+    ynh_exec_as "$app" $bin_file -c "$conf_file" --stop-after-init -i auth_ldap -d "$app"
+    ynh_exec_as "$app" $bin_file -c "$conf_file" --stop-after-init --load-language $lang -d "$app"
     # Configure language, timezone and ldap
-    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
+    ynh_exec_as "$app" $bin_file shell -c "$conf_file" -d "$app" <<< \
 "
 self.env['res.users'].search([['login', '=', 'admin']])[0].write({'password': '$admin_password'})
 self.env.cr.commit()
 "
-    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
+    ynh_exec_as "$app" $bin_file shell -c "$conf_file" -d "$app" <<< \
 "
 self.write({'tz':'$tz','lang':'$lang'})
 self.env.cr.commit()
 "
-    ynh_exec_as "$app" "$bin_file" shell -c "$conf_file" -d "$app" <<< \
+    ynh_exec_as "$app" $bin_file shell -c "$conf_file" -d "$app" <<< \
 "
 template=env['res.users'].create({
   'login':'template',
