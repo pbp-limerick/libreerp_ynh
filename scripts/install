@@ -17,10 +17,10 @@ preinstall=0
 # ADD SWAP
 #=================================================
 
-if [ "${PACKAGE_CHECK_EXEC:-0}" -ne 1 ]; then
-    ynh_script_progression --message="Adding swap..." --weight=1
-    ynh_add_swap --size=$swap_needed
-fi
+# if [ "${PACKAGE_CHECK_EXEC:-0}" -ne 1 ]; then
+#     ynh_script_progression --message="Adding swap..." --weight=1
+#     ynh_add_swap --size=$swap_needed
+# fi
 
 #=================================================
 # CREATE A POSTGRESQL DATABASE
@@ -69,7 +69,7 @@ popd
 #=================================================
 # SETUP DATABASE
 #=================================================
-ynh_script_progression --message="Setuping the database..." --weight=1
+ynh_script_progression --message="Setting up the database..." --weight=1
 
 setup_database
 
