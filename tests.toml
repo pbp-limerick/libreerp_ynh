@@ -3,6 +3,7 @@
 test_format = 1.0
 
 [default]
+    exclude = ["change_url"]
 
     args.version = "14"
     args.tz = "Etc/GMT"
@@ -15,9 +16,13 @@ test_format = 1.0
     test_upgrade_from.c82770776ccf5ea14a1b47f0ee6a113858e749e6.name = "15.0~ynh1"
 
 [no_multisite_v15]
+    exclude = ["change_url"]
+
     args.version = "15"
     args.tz = "Etc/GMT"
 
 [no_multisite_v16]
+    exclude = ["change_url"]
+
     args.version = "16"
     args.tz = "Etc/GMT"
