@@ -42,7 +42,7 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     ask.en = "Choose the version you want"
     ask.fr = "Choisissez la version désirée"
     type = "string"
-    choices = ["11", "12", "14", "15", "16"]
+    choices = ["12", "14", "16"]
     default = "16"
 
     [install.lang]
@@ -71,11 +71,6 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     [resources.sources.main_16_oca]
     url = "https://github.com/OCA/OCB/archive/9d5ff52da5ec65a21a00a46e21783a2c6188dd80.tar.gz"
     sha256 = "3c3a95ec627e3807c85b0b2fd13a484b0b990426efb4905681aaee8768386e39"
-    prefetch = false
-
-    [resources.sources.main_15_oca]
-    url = "https://github.com/OCA/OCB/archive/1ab48bd4c89f21691b34f349338405fcbb85dea4.tar.gz"
-    sha256 = "23b8902b6fc22e4ce36f6dcc7178257235663e9911b61b70b70aeca0fdb36331"
     prefetch = false
 
     [resources.sources.main_14_oca]
