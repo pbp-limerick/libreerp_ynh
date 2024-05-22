@@ -41,7 +41,7 @@ ram.runtime = "200M"
     [install.app_version]
     ask.en = "Choose the version you want"
     ask.fr = "Choisissez la version désirée"
-    type = "string"
+    type = "select"
     choices = ["12", "14", "16"]
     default = "16"
 
