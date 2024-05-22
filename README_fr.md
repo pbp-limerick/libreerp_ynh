@@ -47,7 +47,7 @@ LibreERP is forked from Odoo Community Edition. The name is change due to Odoo t
 
 ## :red_circle: Anti-fonctionnalités
 
-- **Contenu payant**: Promeut ou dépend, entièrement ou partiellement, d'un service payant.
+- **Contenu payant **: Promeut ou dépend, entièrement ou partiellement, d'un service payant.
 
 ## Documentations et ressources
 
