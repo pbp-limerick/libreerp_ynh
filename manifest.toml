@@ -1,0 +1,125 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
+packaging_format = 2
+
+id = "libreerp"
+name = "LibreERP"
+description.en = "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...)"
+description.fr = "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats...)"
+
+version = "16.0~ynh3"
+
+maintainers = ["ljf"]
+
+[upstream]
+license = "LGPL-3.0-only"
+website = "https://odoo.com"
+demo = "https://www.odoo.com/trial"
+admindoc = "https://www.odoo.com/documentation/16.0/administration.html"
+userdoc = "https://www.odoo.com/documentation/16.0/applications.html"
+code = "https://github.com/odoo/odoo"
+cpe = "cpe:2.3:a:odoo:odoo"
+
+[integration]
+yunohost = ">= 11.2"
+architectures = "all"
+multi_instance = true
+ldap = true
+sso = true
+disk = "500M"
+ram.build = "500M"
+ram.runtime = "200M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.app_version]
+    ask.en = "Choose the version you want"
+    ask.fr = "Choisissez la version désirée"
+    type = "string"
+    choices = ["12", "14", "16"]
+    default = "16"
+
+    [install.lang]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "select"
+    choices = ["sq_AL", "am_ET", "ar_SY", "eu_ES", "bs_BA", "bg_BG", "my_MM", "ca_ES", "zh_CN", "zh_HK", "zh_TW", "hr_HR", "cs_CZ", "da_DK", "nl_BE", "nl_NL", "en_AU", "en_GB", "en_US", "et_EE", "fi_FI", "fr_BE", "fr_CA", "fr_CH", "fr_FR", "gl_ES", "ka_GE", "de_CH", "de_DE", "el_GR", "gu_IN", "he_IL", "hi_IN", "hu_HU", "id_ID", "it_IT", "ja_JP", "kab_DZ", "ko_KP", "ko_KR", "lo_LA", "lv_LV", "lt_LT", "mk_MK", "mn_MN", "nb_NO", "fa_IR", "pl_PL", "pt_BR", "pt_PT", "ro_RO", "ru_RU", "sr_RS", "sr@latin", "sk_SK", "sl_SI", "es_AR", "es_BO", "es_CL", "es_CO", "es_CR", "es_DO", "es_EC", "es_GT", "es_MX", "es_PA", "es_PE", "es_PY", "es_UY", "es_VE", "es_ES", "sv_SE", "te_IN", "th_TH", "tr_TR", "uk_UA", "vi_VN"]
+    default = "en_US"
+
+    [install.tz]
+    ask.en = "Choose a timezone"
+    ask.fr = "Choisissez un fuseau horaire"
+    type = "string"
+    default = "Etc/UTC"
+
+    [install.admin]
+    type = "user"
+
+    [install.admin_password]
+    ask.en = "Choose a strong master admin password"
+    ask.fr = "Choisissez un mot de passe maître fort pour l'administration"
+    type = "password"
+
+[resources]
+    [resources.sources]
+    [resources.sources.main_16_oca]
+    url = "https://github.com/OCA/OCB/archive/9d5ff52da5ec65a21a00a46e21783a2c6188dd80.tar.gz"
+    sha256 = "3c3a95ec627e3807c85b0b2fd13a484b0b990426efb4905681aaee8768386e39"
+    prefetch = false
+
+    [resources.sources.main_14_oca]
+    url = "https://github.com/OCA/OCB/archive/890a6aa943aafff149924b1aca2517a95a1b352f.tar.gz"
+    sha256 = "41decd11b20d8f99329c413faec9abd1e5ee75076e5f47a33ab806483f51926c"
+    prefetch = false
+
+    [resources.sources.main_12_oca]
+    url = "https://github.com/OCA/OCB/archive/daa274eb48324d563e1096e334a5a73034be71dc.tar.gz"
+    sha256 = "73bd925d3bdc402248548f92908a07e8475b6703d063609ba7f0729060c59aac"
+    prefetch = false
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+    main.default = 8069
+    chat.default = 8072
+
+    [resources.apt]
+    packages = [
+        "curl",
+        "postgresql",
+        "xfonts-75dpi",
+        "xfonts-base",
+        "wkhtmltopdf",
+        "node-less",
+        "python3-dev",
+        "gcc",
+        "libldap2-dev",
+        "libssl-dev",
+        "libsasl2-dev",
+        "python3-pip",
+        "python3-dev",
+        "python3-venv",
+        "python3-wheel",
+        "libxslt-dev",
+        "libzip-dev",
+        "python3-setuptools",
+        "libjpeg-dev",
+        "zlib1g-dev",
+        "libfreetype6-dev",
+        "libffi-dev",
+        "libpq-dev",
+    ]
+
+    [resources.database]
+    type = "postgresql"
