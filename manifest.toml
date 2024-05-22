@@ -45,12 +45,6 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     choices = ["11", "12", "14", "15", "16"]
     default = "16"
 
-    [install.oca]
-    ask.en = "Do you want to setup OCA instead of LibreERP?"
-    ask.fr = "Désirez vous installer OCA à la place des sources de LibreERP"
-    type = "boolean"
-    default = false
-
     [install.lang]
     ask.en = "Choose the application language"
     ask.fr = "Choisissez la langue de l'application"
@@ -79,19 +73,9 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     sha256 = "3c3a95ec627e3807c85b0b2fd13a484b0b990426efb4905681aaee8768386e39"
     prefetch = false
 
-    [resources.sources.main_16]
-    url = "https://github.com/odoo/odoo/archive/2a88076c1d1df4920bfd139c94862a894d8ef3bc.tar.gz"
-    sha256 = "39d23f01d9a095d75460829acfd53b74bcfc273a074d6eae163eedcaeeeb58c7"
-    prefetch = false
-
     [resources.sources.main_15_oca]
     url = "https://github.com/OCA/OCB/archive/1ab48bd4c89f21691b34f349338405fcbb85dea4.tar.gz"
     sha256 = "23b8902b6fc22e4ce36f6dcc7178257235663e9911b61b70b70aeca0fdb36331"
-    prefetch = false
-
-    [resources.sources.main_15]
-    url = "https://github.com/odoo/odoo/archive/1ab48bd4c89f21691b34f349338405fcbb85dea4.tar.gz"
-    sha256 = "93e12c7574e73403d4da456cf612fd5542d961e302fdf9c3a87cdeca9146184d"
     prefetch = false
 
     [resources.sources.main_14_oca]
@@ -99,39 +83,9 @@ ram.runtime = "50M" # FIXME: replace with an **estimate** minimum ram requiremen
     sha256 = "41decd11b20d8f99329c413faec9abd1e5ee75076e5f47a33ab806483f51926c"
     prefetch = false
 
-    [resources.sources.main_14]
-    url = "https://github.com/odoo/odoo/archive/8ede8a758a92c4b61fe48d820464783e21ee7847.tar.gz"
-    sha256 = "9bd03884cdfe644652a09f86cec652d69c11538d0e0ed620740c25f49099a734"
-    prefetch = false
-
     [resources.sources.main_12_oca]
     url = "https://github.com/OCA/OCB/archive/daa274eb48324d563e1096e334a5a73034be71dc.tar.gz"
     sha256 = "73bd925d3bdc402248548f92908a07e8475b6703d063609ba7f0729060c59aac"
-    prefetch = false
-
-    [resources.sources.main_12]
-    url = "https://github.com/odoo/odoo/archive/c53081f10befd4f1c98e46a450ed3bc71a6246ed.tar.gz"
-    sha256 = "e2569f947d83ee549304a3112cf5dda3ff4ef7affca8e5e6119b1305ccac1bae"
-    prefetch = false
-
-    [resources.sources.main_11]
-    url = "https://github.com/odoo/odoo/archive/43200e9dcc1d91cfd5c1e5e939b27e713d20cc7c.tar.gz"
-    sha256 = "71418fc5536242de72baa2d17b38a439252956fbbb1ebc3e2294c858674c4659"
-    prefetch = false
-
-    [resources.sources.main_10]
-    url = "https://github.com/odoo/odoo/archive/28c3f51c4878fbcd79b2e819948465fcf2160ebc.tar.gz"
-    sha256 = "880be8b9e5a57e67d6645a527efd83224319d8fc645cbd72f24e7e50a75ff31d"
-    prefetch = false
-
-    [resources.sources.main_9]
-    url = "https://github.com/odoo/odoo/archive/7132a15c38a3b5e5ec232404d21aacfa2ac5874e.tar.gz"
-    sha256 = "f4c522da29201835435b01c651032d07c2d0c0e8a14b30f9a784cb531c5ba250"
-    prefetch = false
-
-    [resources.sources.main_8]
-    url = "https://github.com/odoo/odoo/archive/9e8f70e4849b0eeaca8b5cf51372ecfa23dc561b.tar.gz"
-    sha256 = "51d5db432364d272efe8c7b8f93757a63d762393a9163307f52a2f4f950ec4e6"
     prefetch = false
 
     [resources.system_user]
