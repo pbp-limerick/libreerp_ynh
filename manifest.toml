@@ -112,7 +112,7 @@ ram.runtime = "200M"
         "node-tslib",
         "nodejs",
         "libnode108",
-        "pyhton3",
+        "python3",
         "python3-dev",
         "gcc",
         "libldap-2.5-0",
