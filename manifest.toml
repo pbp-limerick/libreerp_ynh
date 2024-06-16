@@ -73,7 +73,6 @@ ram.runtime = "200M"
     sha256 = "b7a8f59bd80eac0460916b504b85400ab32f92f0b1d5d16c940a68c58972512f"
     prefetch = false
 
-    [resources.sources]
     [resources.sources.main_16_oca]
     url = "https://github.com/OCA/OCB/archive/9d5ff52da5ec65a21a00a46e21783a2c6188dd80.tar.gz"
     sha256 = "3c3a95ec627e3807c85b0b2fd13a484b0b990426efb4905681aaee8768386e39"
@@ -113,9 +112,10 @@ ram.runtime = "200M"
         "libldap2-dev",
         "libssl-dev",
         "libsasl2-dev",
+        "python3.11",
         "python3-pip",
         "python3-dev",
-        "python3-venv",
+        "python3.11-venv",
         "python3-wheel",
         "libxslt-dev",
         "libzip-dev",

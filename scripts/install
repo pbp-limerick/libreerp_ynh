@@ -52,7 +52,7 @@ pushd "$install_dir"
     export PATH="$PATH:$install_dir/.cargo/bin:$install_dir/.local/bin:/usr/local/sbin"
 
     if grep "python3" "$install_dir/$appname/$FORKNAME-bin" ; then
-        python3 -m venv venv
+        python3.11 -m venv venv
         venv/bin/pip3 install --upgrade pip
         venv/bin/pip3 install wheel
         venv/bin/pip3 install -r "$appname/requirements.txt"
