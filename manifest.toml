@@ -7,7 +7,7 @@ name = "LibreERP"
 description.en = "Suite of business apps (ERP: CRM, Accounting, Point of Sale, HR, Purchases...)"
 description.fr = "Une collection d'apps de gestion d'entreprise (ERP : CRM, Comptabilité, Point de Vente, RH, Achats...)"
 
-version = "16.0~ynh3"
+version = "17.0~ynh3"
 
 maintainers = ["ljf"]
 
@@ -15,8 +15,8 @@ maintainers = ["ljf"]
 license = "LGPL-3.0-only"
 website = "https://odoo.com"
 demo = "https://www.odoo.com/trial"
-admindoc = "https://www.odoo.com/documentation/16.0/administration.html"
-userdoc = "https://www.odoo.com/documentation/16.0/applications.html"
+admindoc = "https://www.odoo.com/documentation/17.0/administration.html"
+userdoc = "https://www.odoo.com/documentation/17.0/applications.html"
 code = "https://github.com/odoo/odoo"
 cpe = "cpe:2.3:a:odoo:odoo"
 
@@ -42,8 +42,8 @@ ram.runtime = "200M"
     ask.en = "Choose the version you want"
     ask.fr = "Choisissez la version désirée"
     type = "select"
-    choices = ["12", "14", "16"]
-    default = "16"
+    choices = ["12", "14", "16", "17"]
+    default = "17"
 
     [install.lang]
     ask.en = "Choose the application language"
@@ -67,6 +67,12 @@ ram.runtime = "200M"
     type = "password"
 
 [resources]
+    [resources.sources]
+    [resources.sources.main_17_oca]
+    url = "https://github.com/OCA/OCB/archive/c02e216cd5701789a66cb37d16519a2099e72206.tar.gz"
+    sha256 = "b7a8f59bd80eac0460916b504b85400ab32f92f0b1d5d16c940a68c58972512f"
+    prefetch = false
+
     [resources.sources]
     [resources.sources.main_16_oca]
     url = "https://github.com/OCA/OCB/archive/9d5ff52da5ec65a21a00a46e21783a2c6188dd80.tar.gz"
